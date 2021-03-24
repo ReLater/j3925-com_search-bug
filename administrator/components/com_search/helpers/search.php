@@ -347,6 +347,11 @@ class SearchHelper
 		}
 		else
 		{
+			if (($mbtextlen = mb_strlen($text)) < $length)
+			{
+				$length = $mbtextlen;
+			}
+
 			if (($wordpos = @StringHelper::strpos($text, ' ', $length)) !== false)
 			{
 				return StringHelper::substr($text, 0, $wordpos) . '&#160;...';
